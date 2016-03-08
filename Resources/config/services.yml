@@ -15,7 +15,7 @@ services:
 
     positibe_contact.contact_listener:
         class: Positibe\Bundle\ContactBundle\EventListener\ContactEventListener
-        arguments: [@app.send_mail, @positibe_contact.contact_information_manager]
+        arguments: [@sylius.email_sender, @positibe_contact.contact_information_manager]
         tags:
             - { name: kernel.event_subscriber }
 
