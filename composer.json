@@ -10,7 +10,7 @@
     ],
     "homepage": "http://positibelabs.blogspot.com/bundles/contact",
     "license": "Private",
-    "version": "0.1.0.2",
+    "version": "0.2.0.0",
     "authors": [
         {
             "name": "Pedro Carlos Abreu Jiménez",
@@ -32,7 +32,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.1.x-dev"
+            "dev-master": "0.2.x-dev"
         }
     }
 }
