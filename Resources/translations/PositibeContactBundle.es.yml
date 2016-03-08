@@ -1,0 +1,33 @@
+contact:
+    form:
+        name: Nombre(s):
+        email: Correo:
+        message: Mensaje:
+        state: Estado:
+        contactMethod: Método de contacto:
+        state_requested: Solicitado
+        state_processing: Procesando
+        state_pending: Pendiente
+        state_answered: Respondido
+        method_email: Correo
+        method_phone: Teléfono
+        method_both: Ambos
+contact_information:
+    form:
+        enterprise_name: Nombre empresarial:
+        street_address: Dirección (calles):
+        region_address: Dirección (región):
+        phone: Teléfono de contacto:
+        alt_phone: Teléfonos alternativos:
+        email: Correo de contacto:
+        alt_emails: Correos alternativos:
+        extras: Extras:
+    block:
+        contact_information: Información de contacto
+        enterprise_name: Nombre empresarial
+        street_address: Dirección (calles)
+        region_address: Dirección (región)
+        phone: Teléfono de contacto
+        alt_phone: Teléfonos alternativos
+        email: Correo de contacto
+        alt_emails: Correos alternativos

@@ -1,0 +1,23 @@
+{% extends '@PositibeCmf/layout.html.twig' %}
+
+{% block title %}Solicitud de contacto{% endblock %}
+{% block subtitle %}Crear nueva solicitud de contacto{% endblock %}
+{% set menu_active = 'contact' %}
+{% set content_menu = 'contact' %}
+
+{% block breadcrumb_list_list %}
+    <li>
+        <i class="fa fa-angle-right"></i>
+        <a href="{{ path('positibe_contact_index') }}">Solicitud de contacto</a>
+    </li>
+    <li>
+        <i class="fa fa-angle-right"></i>
+        Nueva solicitud de contacto
+    </li>
+{% endblock %}
+
+{% block content %}
+    {{ form_start(form,{'attr': {'class': 'inbox-compose form-horizontal' }}) }}
+    {{ include('@PositibeContact/Contact/_form.html.twig') }}
+    {{ form_end(form) }}
+{% endblock %}

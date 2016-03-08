@@ -1,0 +1,5 @@
+positibe:
+    contact:
+        create: El Mensaje de contacto se ha creado con éxito
+        update: El Mensaje de contacto se ha actualizado con éxito
+        delete: El Mensaje de contacto se ha eliminado con éxito

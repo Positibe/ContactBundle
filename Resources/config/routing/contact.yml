@@ -1,0 +1,50 @@
+positibe_contact_create:
+    path: /contact/new
+    methods: [GET, POST]
+    defaults:
+        _controller: positibe.controller.contact:createAction
+        _sylius:
+            redirect:
+                route: positibe_contact_update
+                parameters: { contactCode: resource.contactCode }
+
+positibe_contact_index:
+   path: /contact
+   methods: [GET]
+   defaults:
+       _controller: positibe.controller.contact:indexAction
+       _sylius:
+            sortable: true
+            sorting:
+                createdAt: desc
+                state: desc
+
+positibe_contact_show:
+    path: /contact/{contactCode}
+    methods: [GET]
+    defaults:
+        _controller: positibe.controller.contact:showAction
+        _sylius:
+            criteria:
+                contactCode: $contactCode
+
+positibe_contact_update:
+    path: /contact/{contactCode}/edit
+    methods: [GET, PUT]
+    defaults:
+        _controller: positibe.controller.contact:updateAction
+        _sylius:
+            criteria:
+                contactCode: $contactCode
+            redirect:
+                route: positibe_contact_update
+                parameters: { contactCode: resource.contactCode }
+
+positibe_contact_delete:
+    path: /contact/{contactCode}
+    methods: [DELETE]
+    defaults:
+        _controller: positibe.controller.contact:deleteAction
+        _sylius:
+            criteria:
+                contactCode: $contactCode

@@ -1,0 +1,14 @@
+positibe_contact_information_show:
+    path: /contact_information
+    methods: [GET]
+    defaults:
+        _controller: positibe.controller.contact_information:showAction
+
+positibe_contact_information_update:
+    path: /contact_information/edit
+    methods: [GET, PUT]
+    defaults:
+        _controller: positibe.controller.contact_information:updateAction
+        _sylius:
+            redirect:
+                route: positibe_contact_information_show

@@ -1,0 +1,13 @@
+{% trans_default_domain 'PositibeContactBundle' %}
+
+{% block block %}
+    <h2>{{ 'contact_information.block.contact_information' | trans }}</h2>
+    <address class="margin-bottom-40">
+        {% if contact_information.streetAddress %}{{ contact_information.streetAddress }}<br>{% endif %}
+        {% if contact_information.regionAddress %}{{ contact_information.regionAddress }}<br>{% endif %}
+        {% if contact_information.phone %}{{ 'contact_information.block.phone' | trans }}: {{ contact_information.phone }}
+            <br>{% endif %}
+        {% if contact_information.email %}{{ 'contact_information.block.email' | trans }}: <a
+                href="mailto:{{ contact_information.email }}">{{ contact_information.email }}</a><br>{% endif %}
+    </address>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% block subject %}
+    {{ subject }}
+{% endblock %}
+
+{% block body %}
+    <h1>Nuevo contacto Contacto: {{ contact.contactCode }}</h1>
+
+    <hr>
+    <p><strong>Nombre:</strong> {{ contact.name }}</p>
+    <p><strong>Email:</strong> {{ contact.email }}</p>
+
+    <p><strong>Mensaje:</strong></p>
+    <p>{{ contact.message | raw }}</p>
+{% endblock %}

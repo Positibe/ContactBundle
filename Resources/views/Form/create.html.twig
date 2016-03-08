@@ -1,0 +1,21 @@
+{% extends "::frontend.html.twig" %}
+
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% block content -%}
+    {% for flashMessage in app.session.flashBag.get('success') %}
+        {% dump(flashMessage) %}
+        <div class="alert alert-info">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+    <div class="portlet light">
+        <div class="portlet-body">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button class="btn" type="submit">Enviar</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endblock %}

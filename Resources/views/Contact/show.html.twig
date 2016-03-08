@@ -1,0 +1,60 @@
+{% extends '@PositibeCmf/layout.html.twig' %}
+
+{% block title %}Solicitud de contacto{% endblock %}
+{% block subtitle %}Detalles de la solicitud de contacto{% endblock %}
+{% set menu_active = 'contact' %}
+{% set content_menu = 'contact' %}
+
+{% block breadcrumb_list %}
+    <li>
+        <i class="fa fa-angle-right"></i>
+        <a href="{{ path('positibe_contact_index') }}">Solicitud de contacto</a>
+    </li>
+    <li>
+        <i class="fa fa-angle-right"></i>
+        {{ contact.name }}
+    </li>
+{% endblock %}
+
+{% block actions_block %}
+    <a href="{{ path('positibe_contact_update', {'contactCode': contact.contactCode}) }}" class="btn grey-salt
+    btn-fit-height"><i class="fa fa-edit"></i> Editar</a>
+{% endblock %}
+
+{% block content %}
+    <div class="portlet light">
+        <div class="portlet-title">
+            <div class="caption">
+                <p class="caption-subject font-green-sharp bold uppercase">
+                    <i class="icon-envelope-open"></i> Solicitud de: {{ contact.name }}
+                </p>
+            </div>
+            <div class="actions">
+                <a href="{{ path('positibe_contact_index') }}"
+                   name="back" class="btn btn-default btn-circle"><i class="fa fa-angle-left"></i> Atras</a>
+
+                <a href="{{ path('positibe_contact_update', {'contactCode': contact.contactCode}) }}" class="btn btn-default btn-circle">
+                    <i class="fa fa-edit"></i> Editar
+                </a>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="row">
+                <div class="col-sm-7">
+                    <h4>Email:</h4>
+                    <p> {{ contact.email }}</p>
+                    <h4>Mensaje:</h4>
+                    <p>{{ contact.message | raw }}</p>
+                </div>
+                <div class="col-sm-5">
+                    <h4>Método de contacto: {{ ('contact.form.method_' ~ contact.contactMethod) | trans({}, 'PositibeContactBundle') }} </h4>
+                    <h4>Estado: {{ ('contact.form.state_' ~ contact.state) | trans({}, 'PositibeContactBundle')}}</h4>
+                    <h4>Fecha de solicitud: {{ contact.createdAt | localizeddate('long', 'medium') }}</h4>
+                    <h4>Última actualización: {{ contact.updatedAt  | localizeddate('long', 'medium') }}</h4>
+                    <p></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

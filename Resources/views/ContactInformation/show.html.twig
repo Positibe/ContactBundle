@@ -1,0 +1,59 @@
+{% extends '@PositibeCmf/layout.html.twig' %}
+
+{% block title %}Información de contacto{% endblock %}
+{% block subtitle %}Detalles de contacto{% endblock %}
+{% set menu_active = 'contact' %}
+{% set content_menu = 'contact_information' %}
+
+{% block breadcrumb_list %}
+    <li>
+        <i class="fa fa-angle-right"></i>
+        <a href="{{ path('positibe_contact_information_show') }}">Información de contacto</a>
+    </li>
+    <li>
+        <i class="fa fa-angle-right"></i>
+        {{ contact_information.enterpriseName | default('-') }}
+    </li>
+{% endblock %}
+
+{% block actions_block %}
+    <a href="{{ path('positibe_contact_information_update') }}" class="btn grey-salt
+    btn-fit-height"><i class="fa fa-edit"></i> Editar</a>
+{% endblock %}
+
+{% block content %}
+    <div class="portlet light">
+        <div class="portlet-title">
+            <div class="caption">
+                <p class="caption-subject font-green-sharp bold uppercase">
+                    <i class="fa fa-info-circle"></i> Nombre empresarial:  {{ contact_information.enterpriseName | default('-') }}
+                </p>
+            </div>
+            <div class="actions">
+                <a href="{{ path('positibe_contact_information_show') }}"
+                   name="back" class="btn btn-default btn-circle"><i class="fa fa-angle-left"></i> Atras</a>
+
+                <a href="{{ path('positibe_contact_information_update') }}" class="btn btn-default btn-circle">
+                    <i class="fa fa-edit"></i> Editar
+                </a>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <h4>Dirección (calles):</h4>
+            <p> {{ contact_information.streetAddress | default('-') }}</p>
+
+            <h4>Dirección (regional):</h4>
+            <p> {{ contact_information.regionAddress | default('-') }}</p>
+
+            <h4>Teléfono:</h4>
+            <p>{{ contact_information.phone | default('-') }}</p>
+            {#<p>{{ contact_information.altPhone | join(', ')| default('-') }}</p>#}
+
+            <h4>Correos:</h4>
+            <p>{{ contact_information.email | default('-') }}</p>
+            {#<p>{{ contact_information.altEmail | join(', ')| default('-') }}</p>#}
+
+        </div>
+
+    </div>
+{% endblock %}

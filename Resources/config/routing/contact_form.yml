@@ -1,0 +1,5 @@
+positibe_contact_form:
+    path: /contact_form
+    methods: [POST]
+    defaults:
+        _controller: positibe.controller.contact:contactFormAction

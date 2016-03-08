@@ -1,0 +1,38 @@
+{
+    "name": "positibe/contact-bundle",
+    "type": "symfony-bundle",
+    "description": "Symfony PositibeContactBundle",
+    "keywords": [
+        "contact",
+        "contact form",
+        "positibe",
+        "positibelabs"
+    ],
+    "homepage": "http://positibelabs.blogspot.com/bundles/contact",
+    "license": "Private",
+    "version": "0.1.0.2",
+    "authors": [
+        {
+            "name": "Pedro Carlos Abreu Jiménez",
+            "email": "pcabreus@gmail.com",
+            "homepage": "https://github.com/pcabreus"
+        },
+        {
+            "name": "PositibeLabs Cooperative",
+            "homepage": "https://github.com/positibelabs"
+        }
+    ],
+    "require": {
+        "symfony/framework-bundle": "~2.3",
+        "doctrine/orm": "~2.4",
+        "sylius/mailer-bundle": "~0.15"
+    },
+    "autoload": {
+        "psr-4": {"Positibe\\Bundle\\ContactBundle\\": ""}
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
+    }
+}

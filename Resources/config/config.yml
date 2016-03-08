@@ -1,0 +1,28 @@
+sylius_mailer:
+    driver: doctrine/orm # Configure the doctrine orm driver used in the documentation.
+    sender:
+        name: %sender_name%
+        address: %sender_address%
+    emails:
+        contact:
+            subject: '{{ subject }}'
+            template: PositibeContactBundle:Email:contact.html.twig
+
+sylius_resource:
+    resources:
+        positibe.contact:
+            driver: doctrine/orm
+            object_manager: default
+            templates: PositibeContactBundle:Contact
+            classes:
+                model:      Positibe\Bundle\ContactBundle\Entity\Contact
+                controller: Positibe\Bundle\ContactBundle\Controller\ContactController
+                repository: Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository
+        positibe.contact_information:
+            driver: doctrine/orm
+            object_manager: default
+            templates: PositibeContactBundle:ContactInformation
+            classes:
+                model:      Positibe\Bundle\ContactBundle\Entity\ContactInformation
+                controller: Positibe\Bundle\ContactBundle\Controller\ContactInformationController
+                repository: Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository

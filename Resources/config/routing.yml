@@ -1,0 +1,5 @@
+positibe_contact:
+    resource: "routing/contact.yml"
+
+positibe_contact_information:
+    resource: "routing/contact_information.yml"

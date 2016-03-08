@@ -1,0 +1,28 @@
+{% extends '@PositibeCmf/layout.html.twig' %}
+{% from '@PositibeCmf/_macros.html.twig' import delete_confirm %}
+
+
+{% block title %}Solicitud de contacto{% endblock %}
+{% block subtitle %}Editar solictud de contacto{% endblock %}
+{% set menu_active = 'contact' %}
+{% set content_menu = 'contact' %}
+
+{% block breadcrumb_list %}
+    <li>
+        <i class="fa fa-angle-right"></i>
+        <a href="{{ path('positibe_contact_index') }}">Solicitud de contacto</a>
+    </li>
+    <li>
+        <i class="fa fa-angle-right"></i>
+        {{ contact.name }}
+    </li>
+{% endblock %}
+
+{% block content %}
+    {{ form_start(form, {'attr': {'class': 'inbox-compose form-horizontal' }}) }}
+    <input type="hidden" name="_method" value="PUT"/>
+    {{ include('@PositibeContact/Contact/_form.html.twig') }}
+    {{ form_end(form) }}
+
+    {{ delete_confirm('positibe_contact_remove', path('positibe_contact_delete', {'contactCode': contact.contactCode})) }}
+{% endblock %}

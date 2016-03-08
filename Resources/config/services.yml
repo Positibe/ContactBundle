@@ -1,0 +1,31 @@
+services:
+    positibe_contact.form.contact:
+        class: Positibe\Bundle\ContactBundle\Form\Type\ContactType
+        tags:
+            - { name: form.type, alias: positibe_contact }
+
+    positibe_contact.form.contact_information:
+        class: Positibe\Bundle\ContactBundle\Form\Type\ContactInformationType
+        tags:
+            - { name: form.type, alias: positibe_contact_information }
+
+    positibe_contact.contact_information_manager:
+        class: Positibe\Bundle\ContactBundle\Model\ContactInformationManager
+        arguments: [@doctrine.orm.entity_manager]
+
+    positibe_contact.contact_listener:
+        class: Positibe\Bundle\ContactBundle\EventListener\ContactEventListener
+        arguments: [@app.send_mail, @positibe_contact.contact_information_manager]
+        tags:
+            - { name: kernel.event_subscriber }
+
+    positibe_contact.block_contact_information:
+        class: Positibe\Bundle\ContactBundle\Block\ContactInformationBlockService
+        arguments: ['positibe_contact.block_contact_information',  @templating, @positibe_contact.contact_information_manager]
+        tags:
+            - { name: sonata.block }
+
+    positibe_contact.form.contact_type:
+        class: Positibe\Bundle\ContactBundle\Form\Type\ContactType
+        tags:
+            - { name: form.type, alias: positibe_contact }

@@ -1,0 +1,86 @@
+{% extends '@PositibeCmf/layout.html.twig' %}
+
+{% from '@PositibeCmf/_macros.html.twig' import pagination %}
+{% import '@PositibeCmf/_buttons.html.twig' as buttons %}
+
+{% block title %}Solicitud de contacto{% endblock %}
+{% block subtitle %}Listado de solicitudes de contacto{% endblock %}
+{% set menu_active = 'contact' %}
+{% set content_menu = 'contact' %}
+
+{% block breadcrumb_list %}
+    <li>
+        <i class="fa fa-angle-right"></i>
+        <a href="{{ path('positibe_contact_index') }}">Solicitudes de contacto</a>
+    </li>
+{% endblock %}
+
+{% block content %}
+    <div class="portlet light">
+        <div class="portlet-title">
+            <div class="caption">
+                <p class="caption-subject font-green-sharp bold uppercase"><i class="fa fa-user"></i> Contactos</p>
+            </div>
+            <div class="actions">
+
+                <a href="{{ path('positibe_contact_create') }}" class="btn btn-sm btn-default btn-circle"><i class="fa
+        fa-plus"></i> Nueva solicitud de contacto</a>
+            </div>
+        </div>
+        <div class="portlet-body">
+            {{ pagination(contacts) }}
+            <table class="table table-striped table-bordered table-hover">
+                <tr>
+                    <th>No.</th>
+                    <th class="col-lg-4">{{ sylius_resource_sort('name', 'Nombre') }}</th>
+                    <th class="col-lg-4">{{ sylius_resource_sort('email', 'Email') }}</th>
+                    <th class="col-lg-4">Mensaje</th>
+                    <th>{{ sylius_resource_sort('state', 'Estado') }}</th>
+                    <th>Acciones</th>
+                </tr>
+                {% set count = contacts.maxPerPage * (contacts.currentPage - 1) %}
+                {% for contact in contacts %}
+                    <tr>
+                        <td>{{ count + loop.index }}</td>
+                        <td>
+                            <a href="{{ path('positibe_contact_update', {'contactCode': contact.contactCode}) }}">{{ contact.name }}
+                            </a>
+                        </td>
+                        <td>
+                            {{ contact.email }}
+                        </td>
+                        <td>
+                            {{ contact.message | truncate(150) }}
+                        </td>
+                        <td>
+                            {% if constant('Positibe\\Bundle\\ContactBundle\\Entity\\Contact::CONTACT_STATE_REQUESTED') == contact.state %}
+                                {% set labelColor = 'danger' %}
+                            {% elseif constant('Positibe\\Bundle\\ContactBundle\\Entity\\Contact::CONTACT_STATE_PROCESSING') == contact.state %}
+                                {% set labelColor = 'warning' %}
+                            {% elseif constant('Positibe\\Bundle\\ContactBundle\\Entity\\Contact::CONTACT_STATE_PENDING') == contact.state %}
+                                {% set labelColor = 'default' %}
+                            {% else %}
+                                {% set labelColor = 'success' %}
+                            {% endif %}
+                            <div class="label label-sm label-{{ labelColor }}">{{ ('contact.form.state_' ~ contact.state ) | trans({}, 'PositibeContactBundle') }}</div>
+                        </td>
+                        <td>
+                            <a class="btn btn-default btn-xs"
+                               href="{{ path('positibe_contact_show', {'contactCode': contact.contactCode}) }}"><i
+                                        class="fa fa-search"></i> Detalles</a>
+                            <a class="btn btn-default btn-xs"
+                               href="{{ path('positibe_contact_update', {'contactCode': contact.contactCode}) }}"><i
+                                        class="fa fa-edit"></i> Editar</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6">No hay solicitudes de contacto</td>
+                    </tr>
+                {% endfor %}
+            </table>
+            {{ pagination(contacts) }}
+        </div>
+    </div>
+
+{% endblock %}
