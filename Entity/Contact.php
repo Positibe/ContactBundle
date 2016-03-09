@@ -100,6 +100,8 @@ class Contact
     public function __construct()
     {
         $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
+        $this->contactCode = uniqid('contact_');
     }
 
     /**

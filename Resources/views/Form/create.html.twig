@@ -4,7 +4,6 @@
 
 {% block content -%}
     {% for flashMessage in app.session.flashBag.get('success') %}
-        {% dump(flashMessage) %}
         <div class="alert alert-info">
             {{ flashMessage }}
         </div>

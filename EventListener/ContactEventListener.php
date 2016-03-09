@@ -52,12 +52,14 @@ class ContactEventListener implements EventSubscriberInterface
             'contact',
             array($this->getContactEmail()),
             array(
-                'subject' => sprintf(
-                    'Mensaje de contacto de %s <%s>. Code: %s',
-                    $contact->getName(),
-                    $contact->getEmail(),
-                    $contact->getContactCode()
-                ),
+                'subject' => $contact->getSubject() !== null ?
+                    $contact->getSubject() :
+                    sprintf(
+                        'Mensaje de contacto de %s <%s>. Code: %s',
+                        $contact->getName(),
+                        $contact->getEmail(),
+                        $contact->getContactCode()
+                    ),
                 'contact' => $contact,
             )
         );
