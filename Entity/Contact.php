@@ -46,6 +46,13 @@ class Contact
     private $email;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="subject", type="string", length="255")
+     */
+    private $subject;
+
+    /**
      * @var string $body
      *
      * @ORM\Column(name="message", type="text", length=65535, nullable=false)
@@ -141,6 +148,22 @@ class Contact
     public function setEmail($email)
     {
         $this->email = $email;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSubject()
+    {
+        return $this->subject;
+    }
+
+    /**
+     * @param string $subject
+     */
+    public function setSubject($subject)
+    {
+        $this->subject = $subject;
     }
 
     /**

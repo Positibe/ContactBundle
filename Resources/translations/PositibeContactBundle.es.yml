@@ -3,6 +3,7 @@ contact:
         name: Nombre(s):
         email: Correo:
         message: Mensaje:
+        subject: Asunto:
         state: Estado:
         contactMethod: Método de contacto:
         state_requested: Solicitado

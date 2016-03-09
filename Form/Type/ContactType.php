@@ -40,6 +40,14 @@ class ContactType extends AbstractType
                 )
             )
             ->add(
+                'subject',
+                null,
+                array(
+                    'required' => true,
+                    'label' => 'contact.form.subject',
+                )
+            )
+            ->add(
                 'message',
                 'textarea',
                 array(
