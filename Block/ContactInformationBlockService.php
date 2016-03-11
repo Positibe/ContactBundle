@@ -11,7 +11,7 @@
 namespace Positibe\Bundle\ContactBundle\Block;
 
 use Positibe\Bundle\ContactBundle\Model\ContactInformationManager;
-use Positibe\Bundle\OrmBlockBundle\Block\Service\AbstractBlockService;
+use Sonata\BlockBundle\Block\BaseBlockService;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Model\BlockInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,7 +23,7 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @author Pedro Carlos Abreu <pcabreus@gmail.com>
  */
-class ContactInformationBlockService extends AbstractBlockService
+class ContactInformationBlockService extends BaseBlockService
 {
     protected $template = 'PositibeContactBundle:Block:block_contact_information.html.twig';
     private $contactInformationManager;
