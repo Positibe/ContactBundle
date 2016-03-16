@@ -53,6 +53,9 @@ class ContactType extends AbstractType
                 array(
                     'required' => true,
                     'label' => 'contact.form.message',
+                    'attr' => array(
+                        'rows' => 10
+                    )
                 )
             )
             ->add(
