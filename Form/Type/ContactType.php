@@ -5,7 +5,6 @@ namespace Positibe\Bundle\ContactBundle\Form\Type;
 use Positibe\Bundle\ContactBundle\Entity\Contact;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
